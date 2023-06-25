@@ -1,0 +1,17 @@
+.example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 40px;
+  }
+  
+  .example-margin {
+    margin:10px;
+  }
+  .mat-mdc-card{
+    background-color:white;
+  }
+ 
+  
+  
+  

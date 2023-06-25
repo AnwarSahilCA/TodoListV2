@@ -1,0 +1,98 @@
+<div>
+    <button class="btn btn-outline-dark" (click)="toCompleted()">Completed Events</button>
+    <button class="btn btn-outline-dark" (click)="toPending()">PendingEvents</button>
+   
+    <mat-card>
+  <mat-card-content>
+    
+
+    <section class="example-section">
+      <mat-progress-bar
+          class="example-margin"
+          [color]="color"
+          mode="buffer"
+          [value]="10"
+          [bufferValue]=0>
+      </mat-progress-bar>
+    </section>
+  </mat-card-content>
+</mat-card>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container mt-4">
+    <input type="text" class="form-control mb-2" [(ngModel)]="searchText" placeholder="Search">
+  
+    <table class="table">
+      <thead>
+        <tr>
+            <th>Id</th>
+          <th>title</th>
+          <th>Descritpion</th>
+          <th>deadline</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="tab" *ngFor="let item of filteredItems">
+            <td id="1">{{item.eventId}}</td>
+          <td id="2">{{ item.title }}</td>
+          <td id="3">{{item.description}}</td>
+          <td id="4">{{ item.deadline }}</td>
+          
+          <button mat-icon-button class="mat-button-custom" (click)="updatestatus(item.eventId,item)" [ngClass]="{'active': isIconActive}">
+            <mat-icon svgIcon="check" aria-hidden="false" aria-label="Example thumbs up SVG icon" class="bt"></mat-icon>
+          </button>
+  
+        <td>  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="fetch(item.eventId)">
+            <!-- <i class="bi bi-plus-circle-dotted"></i> -->CLick
+          </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" value="item.eventId" [(ngModel)]="id">
+                  <input type="text" value="Enter comment" [(ngModel)]="comment.description">
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" *ngIf="item.eventId!==undefined" class="btn btn-primary" (click)="onSubmit(id)">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        
+          
+        </tr>
+      </tbody>
+    </table>
+  
+    <pagination [(ngModel)]="currentPage" [itemsPerPage]="itemsPerPage" [totalItems]="size"></pagination>
+  </div>
+
+ 
+  
+ 
+  
